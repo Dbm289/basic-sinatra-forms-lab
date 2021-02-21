@@ -5,10 +5,13 @@ class App < Sinatra::Base
         erb :newteam
     end
 
-    post '/team' do
-        @team = params["string"]
-        
+    get '/team' do
         erb :team
+    end
+
+    post '/newteam' do
+        @team = Team.find_by_id(params[:id])
+        erb :newteam
         
     end
 
